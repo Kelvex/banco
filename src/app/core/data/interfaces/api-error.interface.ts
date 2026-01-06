@@ -1,6 +1,7 @@
-export interface ApiError {
+import { ApiResponseBase } from './api-response-base.interface';
+
+export interface ApiError extends ApiResponseBase {
   name: string;
-  message: string;
   errors: ValidationError[];
 }
 

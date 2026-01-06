@@ -1,8 +1,12 @@
 <div class="product-wrapper">
   <div class="product">
     <div class="product__toolbar">
-      <input class="product__input" type="text" placeholder="Search..." [(ngModel)]="filterText"
-        (input)="onFilterChange($event)" />
+      <input #searchInput
+       class="product__input"
+       type="text"
+       placeholder="Search..."
+       [(ngModel)]="filterText"
+       (input)="onFilterChange($event)" />
       <button-custom [buttonClass]="'button-primary'" (buttonClicked)="onAdd()">
         Agregar
       </button-custom>
@@ -42,7 +46,8 @@
               <td class="product__td">
                 <dropdown-custom 
                   [dropdownId]="'dropdown-' + product.id" 
-                  (edit)="onEdit(product.id)" 
+                  (edit)="onEdit(product.id)"
+                  (delete)="onDelete(product)"
                   [isOpened]="openDropdown === 'dropdown-' + product.id"
                   (toggle)="toggleDropdown('dropdown-' + product.id)">
                 </dropdown-custom>
@@ -69,3 +74,11 @@
     </div>
   </div>
 </div>
+
+<!-- DIALOG DE CONFIRMACIÓN -->
+@if (showDeleteDialog) {
+  <dialog-custom
+    [question]="messageConfirmDelete"
+    (decision)="handleDeleteDecision($event)">
+  </dialog-custom>
+}

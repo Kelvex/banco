@@ -3,6 +3,7 @@
   --color-primary: #F4F6F9;
   --color-secondary: #F9FAFC;
   --color-tertiary: #DDDDDF;
+  --color-cuaternary: #EAECF2;
   --color-white: #FFFFFF;
   
   /* --- Colores oscuros --- */
@@ -20,6 +21,7 @@
   /* --- Colores específicos --- */
   --color-error: #ED1C24;
   --color-success: #4CAF50;
+  --color-warning: #FFC107;
   
   /* --- Colores de texto --- */
   --text-color-primary: var(--color-dark-secondary);

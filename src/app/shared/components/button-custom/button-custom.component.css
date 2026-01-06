@@ -16,6 +16,10 @@ button {
   background-color: var(--color-gray-light);
 }
 
+.button-ternary {
+  background-color: var(--color-cuaternary);
+}
+
 .button-primary:disabled {
   cursor: auto;
   opacity: 0.6; 

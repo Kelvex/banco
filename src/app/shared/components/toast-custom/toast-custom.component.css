@@ -30,6 +30,11 @@
   color: var(--color-white);
 }
 
+.toast--warning {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+}
+
 .toast__close {
   background: none;
   border: none;

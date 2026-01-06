@@ -1,0 +1,53 @@
+/* OVERLAY */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* CONTENEDOR */
+.dialog-container {
+  padding: 1rem;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
+  background-color: var(--color-white);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* BODY */
+.dialog__body {
+  padding: 1.5rem;
+  border-bottom: 0.0625rem solid var(--color-tertiary);
+}
+
+.dialog__question {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 4rem;
+  line-height: 1.5;
+  color: var(--text-color-primary);
+  text-align: center;
+}
+
+/* FOOTER */
+.dialog__footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dialog__button {
+  flex: 0 0 auto;
+}
