@@ -1,23 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
-  --color-primary: #000;
-  --color-secondary: #fff;
-  --color-success: #4caf50;
-  --color-error: #f44336;
-
-  --color-text: #1f2937;
-  --color-background: #F4F6F9;
-  --color-background-secondary: #FFF;
-  --color-background-head: #F9FAFC;
-  --color-background-btn: #F5DF66;
-  --color-border: #DDDDDF;
+  /* --- Colores principales --- */
+  --color-primary: #F4F6F9;
+  --color-secondary: #F9FAFC;
+  --color-tertiary: #DDDDDF;
+  --color-white: #FFFFFF;
+  
+  /* --- Colores oscuros --- */
+  --color-dark: #000;
+  --color-dark-secondary: #1f2937;
+  
+  /* --- Colores grises --- */
+  --color-gray-light: #ccc;
+  --color-gray-medium: #888;
+  --color-gray-dark: #555;
+  
+  /* --- Colores de énfasis --- */
+  --color-accent: #F5DF66;
+  
+  /* --- Colores específicos --- */
+  --color-error: #ED1C24;
+  
+  /* --- Colores de texto --- */
+  --text-color-primary: var(--color-dark-secondary);
+  --text-color-secondary: var(--color-white);
+  --text-color-disabled: var(--color-gray-medium);
+  --text-color-error: var(--color-error);
 }
+
 
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
-  background-color: white;
+  background-color: var(--color-white);
   font-family: dialog, sans-serif;
-  font-size: small;
 }

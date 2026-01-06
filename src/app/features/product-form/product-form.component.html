@@ -73,8 +73,7 @@
         <!-- Fecha de liberación -->
         <div class="form__field">
           <label for="date_release" class="form__label">Fecha de liberación</label>
-          <input type="date" id="date_release" formControlName="date_release" class="form__input"
-                 (change)="onDateReleaseChange()" 
+          <input type="date" id="date_release" formControlName="date_release" class="form__input" (change)="onDateReleaseChange()" 
                  [ngClass]="{'form__input--error': form.get('date_release')?.invalid && form.get('date_release')?.touched}" />
           @if (form.get('date_release')?.invalid && form.get('date_release')?.touched) {
             <div class="form__error">

@@ -1,88 +1,71 @@
-/* Wrapper general */
 .form-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100%;
-  color: var(--color-text);
-  background: var(--color-background);
+  color: var(--text-color-primary);
+  background-color: var(--color-primary);
 }
 
-/* Formulario */
 .form {
   width: 100%;
-  max-width: 50rem;
+  max-width: 45rem;
   box-sizing: border-box;
-  background: var(--color-background-secondary);
-  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  background-color: var(--color-white);
+  box-shadow: 0 0.0625rem 0.1875rem rgb(0 0 0 / 0.05);
   display: flex;
   flex-direction: column;
 }
 
-/* Header del formulario */
 .form__header {
-  border-bottom: 1px solid var(--color-primary);
+  border-bottom: 0.0625rem solid var(--color-dark);
   text-align: center;
-  font-size: large;
+  font-size: 1.125rem;
 }
 
-/* Título dentro del Header */
 .form__title {
   margin: 2rem;
 }
 
-/* Cuerpo del formulario */
 .form__body {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas */
-  gap: 1.5rem 2rem; /* Espaciado vertical y horizontal */
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2rem;
   margin: 1rem 3rem 2rem 3rem;
 }
 
-/* Grid interno del formulario */
 .form__grid {
   display: contents;
 }
 
-/* Campo individual dentro del formulario */
 .form__field {
   display: flex;
   flex-direction: column;
 }
 
-/* Etiqueta del campo */
 .form__label {
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
-/* Input general */
 .form__input {
   padding: 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 5px;
+  border: 0.0625rem solid var(--color-dark);
+  border-radius: 0.3125rem;
   font-size: 0.95rem;
   box-sizing: border-box;
 }
 
-/* Estado de input deshabilitado */
-.form__input--disabled {
-  background-color: #eee;
-}
-
-/* Error de validación para el campo */
 .form__error {
-  color: red;
+  color: var(--text-color-error);
   font-size: 0.8rem;
   margin-top: 0.3rem;
 }
 
-/* Modificador de error en el input */
 .form__input--error {
-  border: 1px solid red; /* Borde rojo cuando hay error */
+  border: 0.0625rem solid var(--text-color-error);
 }
 
-/* Footer del formulario */
 .form__footer {
   display: flex;
   justify-content: center;
@@ -90,41 +73,38 @@
   margin: 3rem 0rem;
 }
 
-/* Botones del formulario */
 .form__button {
   padding: 1.5rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-/* Input deshabilitado */
 .form__input:disabled {
-  color: #888;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  color: var(--text-color-desabled);
+  background-color: var(--bg-color-light-secondary);
+  border: 0.0625rem solid var(--color-gray-light);
 }
 
 .form__label-disabled {
-  color: #888;
-  font-weight: bold
+  margin-bottom: 0.5rem;
+  color: var(--text-color-desabled);
+  font-weight: bold;
 }
 
-/* Estilo para el botón de reset */
 .form__button--reset {
-  background-color: #ccc;
+  background-color: var(--color-gray-light);
 }
 
-/* Estilo para el botón de submit */
 .form__button--submit {
-  background-color: var(--color-background-btn);
-  color: white;
+  background-color: var(--color-accent);
+  color: var(--text-color-white);
 }
 
-/* Estilo para el botón de submit deshabilitado */
 .form__button--submit:disabled {
-  background-color: var(--color-background-btn);
-  cursor: not-allowed;
+  background-color: var(--color-accent);
+  cursor:auto;
+  opacity: 0.6; 
 }

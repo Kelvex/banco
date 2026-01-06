@@ -107,7 +107,7 @@ export class ProductFormComponent implements OnInit {
     };
   }
 
-  onDateReleaseChange() {
+  onDateReleaseChange() { 
     const releaseDateValue = this.form.get('date_release')?.value;
     if (releaseDateValue) {
       const releaseDate = new Date(releaseDateValue);
@@ -158,42 +158,42 @@ export class ProductFormComponent implements OnInit {
 
   submit() {
     this.form.get('date_revision')?.enable();
-    if(this.isEditMode) {
-      this.form.get('id')?.enable();
-      if (this.form.valid) {
-        this.productService.putProduct(this.form.value).subscribe({
-          next: () => {
-            console.log('Producto actualizado exitosamente');
-          },
-          error: (err) => {
-            this.errorMessage = err.message;
-            console.error('Error al actualizar producto:', err);
-          }
-        });
-
+    
+    if (this.form.valid) {
+      if (this.isEditMode) {
+        this.form.get('id')?.enable();
+        this.updateProduct();
+        this.form.get('id')?.disable();
       } else {
-        this.form.markAllAsTouched();
+        this.createProduct();
       }
-
-    }else {
-      
-      if (this.form.valid) {
-        this.productService.postProduct(this.form.value).subscribe({
-          next: (data) => {
-            console.log('Producto añadido exitosamente:', data);
-          },
-          error: (err) => {
-            this.errorMessage = err.message;
-            console.error('Error al agregar producto:', err);
-          }
-        });
-
-      } else {
-        this.form.markAllAsTouched();
-      }
+    } else {
+      this.form.markAllAsTouched();
     }
+
     this.form.get('date_revision')?.disable();
   }
+
+  private createProduct() {
+    this.productService.postProduct(this.form.value).subscribe({
+      next: (data) => console.log('Producto añadido exitosamente:', data),
+      error: (err) => {
+        this.errorMessage = err.message;
+        console.error('Error al agregar producto:', err);
+      }
+    });
+  }
+
+  private updateProduct() {
+    this.productService.putProduct(this.form.value).subscribe({
+      next: () => console.log('Producto actualizado exitosamente'),
+      error: (err) => {
+        this.errorMessage = err.message;
+        console.error('Error al actualizar producto:', err);
+      }
+    });
+  }
+
 
   resetForm() {
     this.form.reset();
