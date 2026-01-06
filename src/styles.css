@@ -19,6 +19,7 @@
   
   /* --- Colores específicos --- */
   --color-error: #ED1C24;
+  --color-success: #4CAF50;
   
   /* --- Colores de texto --- */
   --text-color-primary: var(--color-dark-secondary);

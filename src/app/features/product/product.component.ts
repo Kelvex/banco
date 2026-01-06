@@ -1,14 +1,16 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '@interfaces/data.interface';
 import { ProductService } from '@services/api/product.service';
 import { Router } from '@angular/router';
+import { DropdownCustomComponent } from "@components/dropdown-custom/dropdown-custom.component";
+import { ButtonCustomComponent } from "@components/button-custom/button-custom.component";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DropdownCustomComponent, ButtonCustomComponent],
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
@@ -19,6 +21,7 @@ export class ProductComponent {
   pageSizeOptions = [5, 10, 25, 50];
   pageSize = 5;
   activeDropdown: HTMLElement | null = null;
+  openDropdown: string | null = null;
 
   constructor(
     private productService: ProductService,
@@ -57,44 +60,14 @@ export class ProductComponent {
     this.router.navigate(['/form']);
   }
 
-  toggleDropdown(event: MouseEvent): void {
-    event.stopPropagation();
-
-    const button = event.currentTarget as HTMLElement;
-    const dropdownMenu = button.nextElementSibling as HTMLElement;
-
-    if (!dropdownMenu) return;
-
-    // Cierra otro dropdown si hay uno abierto
-    if (this.activeDropdown && this.activeDropdown !== dropdownMenu) {
-      this.activeDropdown.style.display = 'none';
-    }
-
-    // Calcula posición: esquina inferior derecha del botón
-    const rect = button.getBoundingClientRect();
-    dropdownMenu.style.position = 'absolute';
-    dropdownMenu.style.top = `${rect.bottom + window.scrollY}px`;
-    dropdownMenu.style.left = `${rect.right - dropdownMenu.offsetWidth + window.scrollX}px`;
-
-    // Toggle display
-    if (dropdownMenu.style.display === 'block') {
-      dropdownMenu.style.display = 'none';
-      this.activeDropdown = null;
+  toggleDropdown(dropdownId: string): void {
+    
+    if (this.openDropdown === dropdownId) {
+      this.openDropdown = null;
     } else {
-      dropdownMenu.style.display = 'block';
-      this.activeDropdown = dropdownMenu;
+      this.openDropdown = dropdownId;
     }
-  }
-
-  // Cierra el dropdown si clickeamos afuera
-  @HostListener('document:click', ['$event'])
-  onClick(event: MouseEvent): void {
-    const target = event.target as HTMLElement;
-
-    if (!target.closest('.product__dropdown-btn') && this.activeDropdown) {
-      this.activeDropdown.style.display = 'none';
-      this.activeDropdown = null;
-    }
+    
   }
 
   onEdit(productId: string) {

@@ -189,56 +189,7 @@
   pointer-events: none;
 }
 
-/* Estilos para el botón de tres puntos */
-.product__dropdown-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--text-color-primary);
-  padding: 0;
-  position: relative;
-}
-
-/* Menú desplegable */
-.product__dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-light);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  border-radius: 0.25rem;
-  width: 9.375rem;
-}
-
-
-/* Mostrar el menú cuando está activo */
-.product__dropdown-menu.active {
-  display: block;
-}
-
-/* Lista de opciones del dropdown */
-.product__dropdown-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Elementos dentro del dropdown */
-.product__dropdown-item {
-  padding: 0.625rem;
-  text-align: left;
-}
-
-.product__dropdown-item a {
-  text-decoration: none;
-  color: #333;
-  display: block;
-}
-
-/* Hover en los elementos del menú */
-.product__dropdown-item:hover {
-  background-color: var(--color-tertiary);
-  cursor: pointer;
+.product__td{
+  position:relative;
+  overflow: visible;
 }

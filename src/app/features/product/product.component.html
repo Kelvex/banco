@@ -3,7 +3,9 @@
     <div class="product__toolbar">
       <input class="product__input" type="text" placeholder="Search..." [(ngModel)]="filterText"
         (input)="onFilterChange($event)" />
-      <button class="product__button" (click)="onAdd()">Agregar</button>
+      <button-custom [buttonClass]="'button-primary'" (buttonClicked)="onAdd()">
+        Agregar
+      </button-custom>
     </div>
 
     <div class="product__table-container">
@@ -38,18 +40,12 @@
               <td class="product__td">{{ product.date_release | date:'dd/MM /yyyy' }}</td>
               <td class="product__td">{{ product.date_revision | date:'dd/MM/yyyy' }}</td>
               <td class="product__td">
-                <!-- Botón de tres puntos -->
-                <button class="product__dropdown-btn" (click)="toggleDropdown($event)">
-                  <i class="fas fa-ellipsis-v"></i>
-                </button>
-
-                <!-- Menú del dropdown -->
-                <div class="product__dropdown-menu" #dropdownMenu>
-                  <ul class="product__dropdown-list">
-                    <li class="product__dropdown-item"><a (click)="onEdit(product.id)">Editar</a></li>
-                    <li class="product__dropdown-item"><a>Eliminar</a></li>
-                  </ul>
-                </div>
+                <dropdown-custom 
+                  [dropdownId]="'dropdown-' + product.id" 
+                  (edit)="onEdit(product.id)" 
+                  [isOpened]="openDropdown === 'dropdown-' + product.id"
+                  (toggle)="toggleDropdown('dropdown-' + product.id)">
+                </dropdown-custom>
               </td>
             </tr>
           </tbody>

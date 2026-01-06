@@ -4,12 +4,14 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, A
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '@services/api/product.service';
 import { Observable, of } from 'rxjs';
-import { map, delay, catchError, debounceTime, switchMap } from 'rxjs/operators';
+import { map, catchError, debounceTime } from 'rxjs/operators';
+import { ButtonCustomComponent } from "@components/button-custom/button-custom.component";
+import { ToastService } from '@shared-services/toast.service';
 
 @Component({
   selector: 'app-product-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, ButtonCustomComponent],
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss']
 })
@@ -22,7 +24,8 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {
@@ -176,10 +179,11 @@ export class ProductFormComponent implements OnInit {
 
   private createProduct() {
     this.productService.postProduct(this.form.value).subscribe({
-      next: (data) => console.log('Producto añadido exitosamente:', data),
+      next: (data) => {
+        this.toastService.showToast(data.message, 'success');
+      },
       error: (err) => {
-        this.errorMessage = err.message;
-        console.error('Error al agregar producto:', err);
+        this.toastService.showToast(err.message, 'error');
       }
     });
   }
@@ -193,7 +197,6 @@ export class ProductFormComponent implements OnInit {
       }
     });
   }
-
 
   resetForm() {
     this.form.reset();

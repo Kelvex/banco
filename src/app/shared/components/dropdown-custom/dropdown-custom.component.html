@@ -1,0 +1,13 @@
+<div class="dropdown">
+    <button class="dropdown__icon" (click)="toggleDropdown()">
+        <i class="fas fa-ellipsis-v"></i>
+    </button>
+
+    <!-- Usamos la clase para alternar la visibilidad del menú -->
+    <div class="dropdown__menu" [ngClass]="{'dropdown__menu--open': isOpened}">
+        <ul class="dropdown__menu__list">
+            <li class="dropdown__menu__item"><a (click)="onEdit()">Editar</a></li>
+            <li class="dropdown__menu__item"><a (click)="onDelete()">Eliminar</a></li>
+        </ul>
+    </div>
+</div>

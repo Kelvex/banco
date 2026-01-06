@@ -73,15 +73,6 @@
   margin: 3rem 0rem;
 }
 
-.form__button {
-  padding: 1.5rem;
-  border: none;
-  border-radius: 0.1875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
 .form__input:disabled {
   color: var(--text-color-desabled);
   background-color: var(--bg-color-light-secondary);
@@ -94,17 +85,4 @@
   font-weight: bold;
 }
 
-.form__button--reset {
-  background-color: var(--color-gray-light);
-}
 
-.form__button--submit {
-  background-color: var(--color-accent);
-  color: var(--text-color-white);
-}
-
-.form__button--submit:disabled {
-  background-color: var(--color-accent);
-  cursor:auto;
-  opacity: 0.6; 
-}
