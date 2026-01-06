@@ -1,0 +1,228 @@
+.product-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  color: var(--color-text);
+}
+
+.product {
+  max-width: 75%;
+  width: 100%;
+  padding: 4rem 2rem 1rem;
+  box-sizing: border-box;
+  background: var(--color-background);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+}
+
+/* Toolbar */
+.product__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 2rem;
+}
+
+.product__input {
+  padding: 1rem 0.5rem;
+  width: 200px;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.product__input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+  outline: none;
+}
+
+.product__button {
+  padding: 1.3rem 1rem;
+  background-color: var(--color-background-btn);
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product__button:hover {
+  filter: brightness(0.9);
+}
+
+/* ===== Tabla ===== */
+
+.product__table-container {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: white;
+}
+
+/* Scroll */
+.product__table-wrapper {
+  overflow-x: auto;
+}
+
+/* Tabla */
+.product__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  min-width: calc(15rem * 6);
+}
+
+/* Columnas */
+.product__th,
+.product__td {
+  min-width: 15rem;
+  max-width: 15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product__th-info {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+
+  background-color: #888;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.product__th-info:hover {
+  background-color: #555;
+}
+
+.product__thead .product__th {
+  padding: 20px 15px;
+  background-color: var(--color-background-head);
+  color: var(--color-primary);
+  text-align: center;
+  border-bottom: 2px solid var(--color-border);
+  user-select: none;
+}
+
+.product__tbody .product__td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.product__tbody .product__row:hover {
+  background-color: var(--color-hover);
+}
+
+.product__tbody img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===== Footer de la tabla ===== */
+
+.product__table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+.product__table-footer-left {
+  user-select: none;
+}
+
+.product__table-footer-right {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.product__table-footer-select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Select base */
+.product__table-footer-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 6px 2.5rem 6px 0.8rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Estilos para el botón de tres puntos */
+.product__dropdown-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 0;
+  position: relative;
+}
+
+/* Menú desplegable */
+.product__dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  border-radius: 4px;
+  width: 150px;
+}
+
+
+/* Mostrar el menú cuando está activo */
+.product__dropdown-menu.active {
+  display: block;
+}
+
+/* Lista de opciones del dropdown */
+.product__dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Elementos dentro del dropdown */
+.product__dropdown-item {
+  padding: 10px;
+  text-align: left;
+}
+
+.product__dropdown-item a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+/* Hover en los elementos del menú */
+.product__dropdown-item:hover {
+  background-color: #f1f1f1;
+}

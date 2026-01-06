@@ -1,0 +1,75 @@
+<div class="product-wrapper">
+  <div class="product">
+    <div class="product__toolbar">
+      <input class="product__input" type="text" placeholder="Search..." [(ngModel)]="filterText"
+        (input)="onFilterChange($event)" />
+      <button class="product__button" (click)="onAdd()">Agregar</button>
+    </div>
+
+    <div class="product__table-container">
+      <div class="product__table-wrapper">
+        <table class="product__table">
+          <thead class="product__thead">
+            <tr class="product__row">
+              <th class="product__th">Logo</th>
+              <th class="product__th">Nombre</th>
+              <th class="product__th">
+                Descripción
+                <span class="product__th-info">i</span>
+              </th>
+              <th class="product__th">
+                Fecha de liberación
+                <span class="product__th-info">i</span>
+              </th>
+              <th class="product__th">
+                Fecha de reestructuración
+                <span class="product__th-info">i</span>
+              </th>
+              <th class="product__th"></th>
+            </tr>
+          </thead>
+          <tbody class="product__tbody">
+            <tr class="product__row" *ngFor="let product of filteredProducts">
+              <td class="product__td">
+                <img [src]="product.logo" alt="{{ product.name }}" width="50" />
+              </td>
+              <td class="product__td">{{ product.name }}</td>
+              <td class="product__td">{{ product.description }}</td>
+              <td class="product__td">{{ product.date_release | date:'dd/MM /yyyy' }}</td>
+              <td class="product__td">{{ product.date_revision | date:'dd/MM/yyyy' }}</td>
+              <td class="product__td">
+                <!-- Botón de tres puntos -->
+                <button class="product__dropdown-btn" (click)="toggleDropdown($event)">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+
+                <!-- Menú del dropdown -->
+                <div class="product__dropdown-menu" #dropdownMenu>
+                  <ul class="product__dropdown-list">
+                    <li class="product__dropdown-item"><a (click)="onEdit(product.id)">Editar</a></li>
+                    <li class="product__dropdown-item"><a>Eliminar</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="product__table-footer">
+        <div class="product__table-footer-left">
+          {{ filteredProducts.length }} Resultados
+        </div>
+        <div class="product__table-footer-right">
+          <div class="product__table-footer-select-wrapper">
+            <select class="product__table-footer-select" [(ngModel)]="pageSize" (change)="onPageSizeChange($event)">
+              <option *ngFor="let size of pageSizeOptions" [value]="size">
+                {{ size }}
+              </option>
+            </select>
+            <span class="product__table-footer-select-arrow">▾</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

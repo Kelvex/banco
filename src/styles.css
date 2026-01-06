@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #000;
+  --color-secondary: #fff;
+  --color-success: #4caf50;
+  --color-error: #f44336;
+
+  --color-text: #1f2937;
+  --color-background: #F4F6F9;
+  --color-background-secondary: #FFF;
+  --color-background-head: #F9FAFC;
+  --color-background-btn: #F5DF66;
+  --color-border: #DDDDDF;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: white;
+  font-family: dialog, sans-serif;
+  font-size: small;
+}
