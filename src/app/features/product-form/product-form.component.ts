@@ -13,7 +13,7 @@ import { ToastService } from '@shared-services/toast.service';
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, CommonModule, ButtonCustomComponent],
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss'],
+  styleUrls: ['./product-form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
@@ -84,7 +84,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       error: (err) => {
         const msg = err?.message || 'Error al cargar el producto';
         this.errorMessage = msg;
-        console.error(msg, err);
       }
     });
   }
@@ -133,17 +132,35 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     const control = this.form.get(controlName);
     if (!control || !control.errors) return [];
 
-    const errors = control.errors;
     const messages: string[] = [];
+    const errors = control.errors;
 
-    if (errors['required']) messages.push(`${this.capitalizeFirstLetter(controlName)} es obligatorio`);
-    if (errors['minlength']) messages.push(`${this.capitalizeFirstLetter(controlName)} debe tener al menos ${errors['minlength'].requiredLength} caracteres`);
-    if (errors['maxlength']) messages.push(`${this.capitalizeFirstLetter(controlName)} debe tener máximo ${errors['maxlength'].requiredLength} caracteres`);
-    if (errors['invalidDateRelease']) messages.push('La fecha debe ser igual o posterior a la fecha actual');
-    if (errors['idAlreadyExists']) messages.push('Este ID ya existe');
+    Object.keys(errors).forEach((errorKey) => {
+      switch (errorKey) {
+        case 'required':
+          messages.push(`${this.capitalizeFirstLetter(controlName)} es obligatorio`);
+          break;
+        case 'minlength':
+          messages.push(`${this.capitalizeFirstLetter(controlName)} debe tener al menos ${errors['minlength'].requiredLength} caracteres`);
+          break;
+        case 'maxlength':
+          messages.push(`${this.capitalizeFirstLetter(controlName)} debe tener máximo ${errors['maxlength'].requiredLength} caracteres`);
+          break;
+        case 'invalidDateRelease':
+          messages.push('La fecha debe ser igual o posterior a la fecha actual');
+          break;
+        case 'idAlreadyExists':
+          messages.push('Este ID ya existe');
+          break;
+        default:
+          messages.push(`${this.capitalizeFirstLetter(controlName)} no es válido`);
+          break;
+      }
+    });
 
     return messages;
   }
+
 
   capitalizeFirstLetter(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1);

@@ -1,6 +1,8 @@
 <div class="toast-container">
-  <div *ngFor="let toast of toasts" class="toast" [ngClass]="'toast--' + toast.type">
-    <div class="toast__message">{{ toast.message }}</div>
-    <button class="toast__close" (click)="removeToast(toast)">×</button>
-  </div>
+  @for (toast of toasts; track $index) {
+    <div class="toast" [ngClass]="'toast--' + toast.type">
+      <div class="toast__message">{{ toast.message }}</div>
+      <button class="toast__close" (click)="removeToast(toast)">×</button>
+    </div>
+  }
 </div>
