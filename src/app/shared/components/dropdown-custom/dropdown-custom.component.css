@@ -1,27 +1,26 @@
 /* dropdown.component.css */
 
-/* Bloque principal - Dropdown */
+
 .dropdown {
-  position: relative; /* Necesario para que el menú se posicione de manera absoluta */
-  display: inline-block; /* Hace que el dropdown se comporte como un bloque en línea */
+  position: relative;
+  display: inline-block;
 }
 
-/* Icono de los tres puntos - Botón */
+
 .dropdown__icon {
   background: transparent;
   border: none;
-  font-size: 1.5rem; /* 24px (1.5 * 16px) */
-  color: var(--text-color-primary); /* Usamos variables CSS para colores */
+  font-size: 1.5rem;
+  color: var(--text-color-primary);
   cursor: pointer;
   padding: 0;
-  transition: transform 0.3s ease; /* Transición para animación al hacer hover */
+  transition: transform 0.3s ease;
 }
 
 .dropdown__icon:hover {
-  transform: scale(1.1); /* Efecto de hover, el icono crece un poco */
+  transform: scale(1.1);
 }
 
-/* El botón que activa el dropdown (tres puntos) */
 .dropdown__dropdown-btn {
   background: transparent;
   border: none;
@@ -30,65 +29,64 @@
   color: var(--text-color-primary);
   padding: 0;
   position: relative;
-  z-index: 101; /* Asegura que el botón esté encima del menú */
+  z-index: 101;
 }
 
-/* Menú del dropdown */
 .dropdown__menu {
-  display: none; /* El menú está oculto por defecto */
+  display: none;
   position: absolute;
-  top: 100%; /* Posicionamos el menú debajo del botón */
+  top: 100%;
   left: 0;
-  background-color: var(--color-white); /* Fondo blanco para el menú */
-  border: 0.0625rem solid var(--color-gray-light); /* Borde gris claro (1px = 0.0625rem) */
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  z-index: 1000; /* Asegura que esté sobre otros elementos */
-  border-radius: 0.25rem; /* Redondeo de esquinas */
-  width: 7rem; /* 160px */
-  box-sizing: border-box; /* Asegura que el padding no afecte al tamaño */
+  background-color: var(--color-white);
+  border: 0.0625rem solid var(--color-gray-light);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 0.25rem;
+  width: 7rem;
+  box-sizing: border-box;
 }
 
-/* Clase para mostrar el menú cuando está abierto */
 .dropdown__menu--open {
-  display: block; /* Muestra el menú cuando isOpened es true */
+  display: block;
 }
 
-/* Lista dentro del menú */
 .dropdown__menu__list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* Elementos dentro de la lista */
 .dropdown__menu__item {
-  padding: 0.75rem 1rem; /* 12px arriba/abajo, 16px a los lados */
-  font-size: 1rem; /* 16px */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
   text-align: left;
-  transition: background-color 0.3s ease; /* Transición para el hover */
+  transition: background-color 0.3s ease;
 }
 
 .dropdown__menu__item a {
   text-decoration: none;
-  color: var(--text-color-primary); /* Color del texto */
+  color: var(--text-color-primary);
   display: block;
-  width: 100%; /* Hace que todo el área del item sea clickeable */
+  width: 100%;
 }
 
-/* Hover sobre los elementos del menú */
 .dropdown__menu__item:hover {
-  background-color: var(--color-tertiary); /* Fondo al hacer hover */
+  background-color: var(--color-tertiary);
   cursor: pointer;
 }
 
-/* Responsividad: Ajustes para pantallas pequeñas */
-@media (max-width: 48rem) { /* 768px */
-  .dropdown__menu {
-    width: auto; /* El menú se adapta al tamaño del contenido */
-    max-width: 12rem; /* 192px (máximo ancho) */
+/* ===== Responsive ===== */
+@media (max-width: 48rem) {
+  
+  .dropdown__icon {
+    font-size: 1.3rem;
   }
 
-  .dropdown__icon {
-    font-size: 1.3rem; /* 20.8px */
+  .dropdown__menu {
+    width: auto;
+    max-width: 12rem;
+    right: 0;
+    left: auto;
+    top: 100%;
   }
 }
