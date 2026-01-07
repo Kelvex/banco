@@ -8,8 +8,8 @@ describe('LayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ LayoutComponent],
-      providers: [provideRouter([])]
+      imports: [LayoutComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);
@@ -17,17 +17,23 @@ describe('LayoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('debería crearse', () => {
-    expect(component).toBeTruthy();
+  // ---------------------- INITIALIZATION ----------------------
+  describe('Initialization', () => {
+    it('should be created', () => {
+      expect(component).toBeTruthy();
+    });
   });
 
-  it('debería renderizar el router-outlet', () => {
-    const routerOutlet = fixture.nativeElement.querySelector('router-outlet');
-    expect(routerOutlet).toBeTruthy();
-  });
+  // ---------------------- RENDERING ----------------------
+  describe('Rendering', () => {
+    it('should render the router-outlet', () => {
+      const routerOutlet = fixture.nativeElement.querySelector('router-outlet');
+      expect(routerOutlet).toBeTruthy();
+    });
 
-  it('debería renderizar el toast-custom', () => {
-    const toast = fixture.nativeElement.querySelector('toast-custom');
-    expect(toast).toBeTruthy();
+    it('should render the toast-custom', () => {
+      const toast = fixture.nativeElement.querySelector('toast-custom');
+      expect(toast).toBeTruthy();
+    });
   });
 });

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { ButtonCustomComponent } from './button-custom.component';
 
 describe('ButtonCustomComponent', () => {
@@ -16,46 +15,55 @@ describe('ButtonCustomComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
+  // ---------------------- INICIALIZACIÓN ----------------------
+  describe('Initialization', () => {
+    it('should create the component', () => {
+      expect(component).toBeTruthy();
+    });
   });
 
-  it('should render content', () => {
-    const button = fixture.nativeElement.querySelector('button');
-    button.textContent = 'Click me';
-    fixture.detectChanges();
-    expect(button.textContent).toContain('Click me');
+  // ---------------------- INTERACCIÓN DEL BOTÓN ----------------------
+  describe('Button Interaction', () => {
+    it('should render content', () => {
+      const button = fixture.nativeElement.querySelector('button');
+      button.textContent = 'Click me';
+      fixture.detectChanges();
+      expect(button.textContent).toContain('Click me');
+    });
+
+    it('should emit buttonClicked when clicked', () => {
+      spyOn(component.buttonClicked, 'emit');
+      const button = fixture.nativeElement.querySelector('button');
+
+      button.click();
+      expect(component.buttonClicked.emit).toHaveBeenCalled();
+    });
+
+    it('should not emit buttonClicked when disabled', () => {
+      spyOn(component.buttonClicked, 'emit');
+      component.isDisabled = true;
+      fixture.detectChanges();
+      const button = fixture.nativeElement.querySelector('button');
+
+      button.click();
+      expect(component.buttonClicked.emit).not.toHaveBeenCalled();
+    });
   });
 
-  it('should apply buttonClass input', () => {
-    component.buttonClass = 'my-class';
-    fixture.detectChanges();
-    const button = fixture.nativeElement.querySelector('button');
-    expect(button.classList).toContain('my-class');
-  });
+  // ---------------------- ESTADO DEL BOTÓN ----------------------
+  describe('Button State', () => {
+    it('should apply buttonClass input', () => {
+      component.buttonClass = 'my-class';
+      fixture.detectChanges();
+      const button = fixture.nativeElement.querySelector('button');
+      expect(button.classList).toContain('my-class');
+    });
 
-  it('should disable button when isDisabled is true', () => {
-    component.isDisabled = true;
-    fixture.detectChanges();
-    const button = fixture.nativeElement.querySelector('button');
-    expect(button.disabled).toBeTrue();
-  });
-
-  it('should emit buttonClicked when clicked', () => {
-    spyOn(component.buttonClicked, 'emit');
-    const button = fixture.nativeElement.querySelector('button');
-
-    button.click();
-    expect(component.buttonClicked.emit).toHaveBeenCalled();
-  });
-
-  it('should not emit buttonClicked when disabled', () => {
-    spyOn(component.buttonClicked, 'emit');
-    component.isDisabled = true;
-    fixture.detectChanges();
-    const button = fixture.nativeElement.querySelector('button');
-
-    button.click();
-    expect(component.buttonClicked.emit).not.toHaveBeenCalled();
+    it('should disable button when isDisabled is true', () => {
+      component.isDisabled = true;
+      fixture.detectChanges();
+      const button = fixture.nativeElement.querySelector('button');
+      expect(button.disabled).toBeTrue();
+    });
   });
 });
